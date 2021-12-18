@@ -28,9 +28,7 @@ def rect_to_bb(rect: dlib.rectangle) -> Tuple[Any, Any, Any, Any]:
     return x, y, w, h
 
 
-def shape_to_np(
-    shape: full_object_detection, dtype: str = "int"
-) -> NDArray[Any]:
+def shape_to_np(shape: full_object_detection, dtype: str = "int") -> NDArray[Any]:
     """Transform shape object to array of landmarks cords."""
     coords = np.zeros((68, 2), dtype=dtype)
     for i in range(0, 68):

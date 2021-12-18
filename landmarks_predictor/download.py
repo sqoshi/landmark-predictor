@@ -10,6 +10,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import urlretrieve
 
 from termcolor import colored
+
 from .terminal_progressbar import TerminalProgressBar
 
 logger = logging.getLogger(__name__)
