@@ -75,7 +75,7 @@ def get_predictor(predictor_fp: Optional[str], auto_download: bool) -> str:
     return predictor_fp
 
 
-class LandmarkPredictor:
+class LandmarksPredictor:
     """Detects 68 landmarks on image with front face."""
 
     def __init__(

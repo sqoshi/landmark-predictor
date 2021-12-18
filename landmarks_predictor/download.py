@@ -5,12 +5,12 @@ from bz2 import BZ2File
 from http.client import HTTPException
 from pathlib import Path
 from tarfile import CompressionError
-from typing import Optional, Union
+from typing import Union
 from urllib.error import HTTPError, URLError
 from urllib.request import urlretrieve
 
 from termcolor import colored
-from terminal_progressbar import TerminalProgressBar
+from .terminal_progressbar import TerminalProgressBar
 
 logger = logging.getLogger(__name__)
 
