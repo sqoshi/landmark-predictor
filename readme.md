@@ -1,5 +1,7 @@
 # landmark-predictor
 
+Project is a part of series related with my Bachelor of Science Thesis research.
+
 ## Table Of Contents
 
 - [landmark-predictor](#landmark-predictor)
