@@ -39,6 +39,16 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Welcome to LandmarksPredictor’s documentation!</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#readme">Readme</a></li>
+<li><a class="reference internal" href="#landmark-predictor">landmark-predictor</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table Of Contents</a></li>
+<li><a class="reference internal" href="#id3">General</a></li>
+<li><a class="reference internal" href="#id4">Installation</a></li>
+<li><a class="reference internal" href="#id5">Usage</a></li>
+<li><a class="reference internal" href="#id6">Automatic download</a></li>
+<li><a class="reference internal" href="#id7">Code Example</a></li>
+</ul>
+</li>
 </ul>
 </div>
         </div>
@@ -77,6 +87,98 @@
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
+</section>
+<section id="readme">
+<h1>Readme<a class="headerlink" href="#readme" title="Permalink to this headline"></a></h1>
+</section>
+<section id="landmark-predictor">
+<h1>landmark-predictor<a class="headerlink" href="#landmark-predictor" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#landmark-predictor">landmark-predictor</a></p>
+<ul>
+<li><p><a class="reference external" href="#table-of-contents">Table Of Contents</a></p></li>
+<li><p><a class="reference external" href="#general">General</a></p></li>
+<li><p><a class="reference external" href="#installation">Installation</a></p></li>
+<li><p><a class="reference external" href="#usage">Usage</a></p></li>
+<li><p><a class="reference external" href="#automatic-download">Automatic download</a></p></li>
+<li><p><a class="reference external" href="#code-example">Code Example</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>General<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Python wrapper for the dlib model with automated model download and predict functionalities.</p>
+<p>Package has been created to allow automatic dlib’s predictor handling ( download, get, find ,
+store)</p>
+</section>
+<section id="id4">
+<h2>Installation<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/sqoshi/landmark-predictor.git
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Usage<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">landmarks_predictor</span> <span class="kn">import</span> <span class="n">LandmarksPredictor</span>
+
+<span class="n">landmarks_predictor</span> <span class="o">=</span> <span class="n">LandmarksPredictor</span><span class="p">(</span>
+        <span class="n">predictor_fp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_samples</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">face_detection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">auto_download</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">images</span><span class="p">)</span> <span class="c1"># absolute paths</span>
+
+<span class="n">landmarks_predictor</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>Automatic download<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[22:48:43][INFO] - Looking for shape predictor in &#39;/home/Documents/bsc-thesis/mask-imposer/venv/lib/python3.8/site-packages&#39;</span>
+<span class="go">[22:48:43][INFO] - Looking for shape predictor in &#39;/home/Documents/bsc-thesis/mask-imposer&#39;</span>
+<span class="go">[22:48:43][WARNING] - Shape predictor not found.</span>
+<span class="go">Would you like to download 64 [MB] model ?</span>
+<span class="go">y</span>
+<span class="go">[22:48:45][WARNING] - Downloading shape `shape_predictor_68_face_landmarks.bz2` ...</span>
+<span class="go">100% |#############################################################################################################################################|</span>
+<span class="go">[22:53:45][INFO] - Predictor downloaded.</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>Code Example<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]],</span> <span class="n">create_map</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates landmark collection.</span>
+
+<span class="sd">    During creation may optionally display samples with drawn landmarks.</span>
+<span class="sd">    May detect face boxes, but it is preferred to pass images as stated in readme.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">images_list</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detect_face_rect</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>  <span class="c1"># detect rectangles with faces</span>
+
+            <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predictor</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">get_gray_img</span><span class="p">(),</span> <span class="n">rect</span><span class="p">)</span>  <span class="c1"># detect landmarks</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_landmarks_collection</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">image</span><span class="p">)]</span> <span class="o">=</span> <span class="n">_shape_to_dict</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">create_map</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fake_map</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">image</span><span class="p">)]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_display_samples</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_display_sample</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>  <span class="c1"># must be changed</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Landmarks not detected on </span><span class="si">{</span><span class="n">image</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_check_fails</span><span class="p">(</span><span class="n">images_list</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Detection finished.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
